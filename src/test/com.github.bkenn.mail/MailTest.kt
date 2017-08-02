@@ -8,6 +8,32 @@ class MailTest {
 }
 
 /*
+
+    fun send(email: Email) {
+        val props = Properties()
+        props.put("mail.smtp.auth", "true")
+        props.put("mail.smtp.starttls.enable", "true")
+        props.put("mail.smtp.host", "smtp.gmail.com")
+        props.put("mail.smtp.port", "587")
+
+        val session = Session.getInstance(props, object : javax.mail.Authenticator() {
+            override fun getPasswordAuthentication(): PasswordAuthentication {
+                return PasswordAuthentication(email.from, email.password)
+            }
+        })
+
+        Mail.create(session) {
+            subject(email.subject)
+            from(email.from)
+            to(email.tos)
+            body {
+                message(email.message)
+                email.files?.forEach { (first, second) ->
+                    file(first, second)
+                }
+            }
+        }
+    }
 fun main(args: Array<String>) {
     val service = EmailService()
 
