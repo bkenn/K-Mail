@@ -7,21 +7,9 @@ import javax.mail.internet.MimeMessage
 import javax.mail.internet.MimeMultipart
 
 /**
- * Created: Brian
+ * Created: Brian Kennedy
  * Date:    8/2/2017
  */
-object Mail {
-    fun create(session: Session, op: MimeMessage.() -> Unit) {
-        try {
-            val message = MimeMessage(session)
-            message.op()
-            Transport.send(message)
-        } catch (ex: MessagingException) {
-            ex.printStackTrace()
-        }
-    }
-}
-
 fun email(session: Session, op: MimeMessage.() -> Unit) {
     try {
         val message = MimeMessage(session)
